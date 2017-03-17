@@ -15,13 +15,26 @@
 
       {% if newcontacts is not empty %}
         {% for newcontact in newcontacts %}
-          <p>You added {{ newcontact.getName }} to you contact book</p>
-          <li>Mobile: {{ newcontact.getMobile }}</li>
-          <li>Email: {{ newcontact.getEmail }}</li>
-          <li>Company: {{ newcontact.getCompany }}</li>
-          <li>Relation: {{ newcontact.getRelation }}</li>
-          <li>Address: {{ newcontact.getAddress }}</li>
-          <li>Group: {{ newcontact.getGroup }}</li>
+
+            <p>You added {{ newcontact.getName }} to you contact book</p>
+            <li>Mobile: {{ newcontact.getMobile }}</li>
+            <li>Email: {{ newcontact.getEmail }}</li>
+            <li>Company: {{ newcontact.getCompany }}</li>
+            <li>Relation: {{ newcontact.getRelation }}</li>
+            <li>Address: {{ newcontact.getAddress }}</li>
+            <li>Group: {{ newcontact.getGroup }}</li>
+            <div>
+            <form id="hide" action="/edit" method="get">
+              <input name="name" value="{{ newcontact.getName }}">
+              <input name="mobile" value="{{ newcontact.getMobile }}">
+              <input name="email" value="{{ newcontact.getEmail }}">
+              <input name="company" value="{{ newcontact.getCompany }}">
+              <input name="relation" value="{{ newcontact.getRelation }}">
+              <input name="address" value="{{ newcontact.getAddress }}">
+              <input name="group" value="{{ newcontact.getGroup }}">
+            </div>
+            <button type="submit">Edit</button>
+          </form>
         {% endfor %}
       {% endif %}
     </div>
@@ -67,7 +80,6 @@
         <input id="sortName" name="sortName" type="text">
         <button class="btn bg-warning">Sort</button>
       </form>
-
     {% endif %}
 
       <form action="/delete_all" method="post">

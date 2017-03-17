@@ -1,0 +1,19 @@
+{% include 'head.html.twig' %}
+<h3>Edit</h3>
+<form action="/resub" method="post">
+  <p>Mobile:</p>
+  <input name="name" type="text" placeholder="{{ edit.getName }}">
+  <p>Email:</p>
+  <input name="email" type="text" placeholder="{{ edit.getEmail }}">
+  <p>Company:</p>
+  <input name="company" type="text" placeholder="{{ edit.getCompany }}">
+  <p>Relation:</p>
+  <input name="relation" type="text" placeholder="{{ edit.getRelation }}">
+  <p>Address:</p>
+  <input name="address" type="text" placeholder="{{ edit.getAddress }}">
+  <p>Group:</p>
+  <input name="group" type="text" placeholder="{{ edit.getGroup }}">
+
+  <button type="submit">Resubmit</button>
+</form>
+{% include 'foot.html.twig' %}

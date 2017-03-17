@@ -62,6 +62,26 @@
     return $app['twig']->render('sort.html.twig', array('contacts'=> $srt, 'grp'=>$sort_name));
   });
 
+  $app->get("/edit", function () use ($app) {
+    $grab_name = $_GET['name'];
+    $grab_mobile = $_GET['mobile'];
+    $grab_email = $_GET['email'];
+    $grab_company = $_GET['company'];
+    $grab_relation = $_GET['relation'];
+    $grab_address = $_GET['address'];
+    $grab_group = $_GET['group'];
+
+    $edit = new Contact ($grab_name,$grab_company,$grab_relation,$grab_mobile,$grab_email,$grab_address,$grab_group);
+    return $app['twig']->render('edit.html.twig', array('edit'=> $edit));
+  });
+
+  $app->post("/resub", function () use ($app) {
+
+
+
+
+  });
+
 
   $app->post("/delete_all", function() use ($app) {
     Contact::delete();

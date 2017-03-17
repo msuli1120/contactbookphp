@@ -1,3 +1,7 @@
 h2.invalid {
   color: red;
 }
+
+form#hide {
+  display: none;
+}
