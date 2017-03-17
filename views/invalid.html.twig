@@ -1,6 +1,10 @@
 {% include 'head.html.twig' %}
 
-<h2>{{ nameerr }}</h2>
-<h2>{{ emailerr }}</h2>
-<h2>{{ phoneerr }}</h2>
+<h2 class="invalid">{{ nameerr }}</h2>
+<h2 class="invalid">{{ emailerr }}</h2>
+<h2 class="invalid">{{ phoneerr }}</h2>
+
+<form action="/" method="get">
+  <button type="submit">Go Back</button>
+</form>
 {% include 'foot.html.twig' %}

@@ -79,11 +79,9 @@
       array_push($_SESSION['list_of_contacts'], $this);
     }
 
-
     static function getContactList () {
       return $_SESSION['list_of_contacts'];
     }
-
 
     static function delete () {
       session_destroy();

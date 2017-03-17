@@ -7,8 +7,7 @@
 
   if(empty($_SESSION['list_of_contacts'])) {
     $_SESSION['list_of_contacts'] = array ();
-  }
-
+  };
 
   $app = new Silex\Application();
   $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -17,7 +16,6 @@
 
   $app->get("/", function() use ($app) {
     $exist_con = array ();
-
     $adam = new Contact ("Adam", "Cafe", "friend", "206-000-0000", "adam@mail.com", "0000 1st Ave, Seattle WA", "friends" );
     $bob = new Contact ("Bob", "Uber", "friend", "206-000-0001", "bob@mail.com", "0001 1st Ave, Seattle WA", "friends" );
     $ceaser = new Contact ("Ceaser", "Restaurant", "friend", "206-000-0002", "ceaser@mail.com", "0002 1st Ave, Seattle WA", "friends" );
@@ -57,7 +55,7 @@
     $srt = array ();
     $sort_name = $_POST['sortName'];
     foreach(Contact::getContactList() as $contact) {
-      if ($sort_name === $contact->getGroup()){
+      if ($sort_name == $contact->getGroup()){
         array_push($srt, $contact);
       };
     };
