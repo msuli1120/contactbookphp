@@ -1,24 +1,33 @@
-# _**Xing Li's Portfolio**_
+# _**Contact Book**_
 
-#### _First independent project and first Xing's Portfolio forever, 02/10/2017_
+#### _A contact book app for storing contacts, 03/17/2017_
 
 #### _By Xing Li_
 
 ## Description
 
-_As a noob in Tec industry, I also need a personal Portfolio for future use. It will let you or whoever reads the page know me better, so that you know there is such a weirdo existing in the world_
+_an address book to store contact information for friends and family, using php, silex, and twig_
 
 ## Setup
 
 * _clone the repository_
-* _open the folder_
-* _right click index.html_
-* _open with a browser_
-* _you will know me_
+* _change to project folder_
+* _open terminal and run composer install_
+* _cd to web folder and run php -S localhost:8000_
+* _in URL type localhost:8000_
+* _try it out_
 
-[click here](https://github.com/msuli1120/portfolio.git) to check out my portfolio
+## Specs
+
+* _Declare a class Contact including few properties: name, mobile, email, address, etc_
+* _need a method to save new objects_
+* _need a static method to return the session array_
+* _also a static method to delete all_
+*_save all default new objects in an array and display on homepage_
+
+[click here](https://github.com/msuli1120/contactbookphp.git) to check out my portfolio
 
 ### License
 *This application is licensed under Xing Li's name*
 copyright (c) 2017 **_Xing Li_**
-# portfolio
+# contactbook
