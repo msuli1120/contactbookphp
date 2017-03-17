@@ -1,18 +1,20 @@
 {% include 'head.html.twig' %}
 <h3>Edit</h3>
 <form action="/resub" method="post">
+  <h2>You want to edit <input name="name" type="text" placeholder="{{ edit.getName }}" value="{{ edit.getName }}"></h2>
   <p>Mobile:</p>
-  <input name="name" type="text" placeholder="{{ edit.getName }}">
+  <input name="mobile" type="text" placeholder="{{ edit.getMobile }}" value="{{ edit.getMobile }}">
   <p>Email:</p>
-  <input name="email" type="text" placeholder="{{ edit.getEmail }}">
+  <input name="email" type="text" placeholder="{{ edit.getEmail }}" value="{{ edit.getEmail }}">
   <p>Company:</p>
-  <input name="company" type="text" placeholder="{{ edit.getCompany }}">
+  <input name="company" type="text" placeholder="{{ edit.getCompany }}" value="{{ edit.getCompany }}">
   <p>Relation:</p>
-  <input name="relation" type="text" placeholder="{{ edit.getRelation }}">
+  <input name="relation" type="text" placeholder="{{ edit.getRelation }}"
+  value="{{ edit.getRelation }}">
   <p>Address:</p>
-  <input name="address" type="text" placeholder="{{ edit.getAddress }}">
+  <input name="address" type="text" placeholder="{{ edit.getAddress }}" value="{{ edit.getAddress }}">
   <p>Group:</p>
-  <input name="group" type="text" placeholder="{{ edit.getGroup }}">
+  <input name="group" type="text" placeholder="{{ edit.getGroup }}" value="{{ edit.getGroup }}">
 
   <button type="submit">Resubmit</button>
 </form>

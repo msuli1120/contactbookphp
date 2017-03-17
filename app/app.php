@@ -76,10 +76,9 @@
   });
 
   $app->post("/resub", function () use ($app) {
-
-
-
-
+    $new_contact = new Contact ($_POST['name'],$_POST['company'],$_POST['relation'],$_POST['mobile'],$_POST['email'],$_POST['address'],$_POST['group']);
+    $new_contact->saveContact();
+    return $app['twig']->render('index.html.twig', array('newcontacts'=>Contact::getContactList()));
   });
 
 
