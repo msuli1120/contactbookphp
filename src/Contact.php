@@ -59,6 +59,14 @@
       return $this->email;
     }
 
+    function setAddress ($new_address) {
+      $this->address = (string) $new_address;
+    }
+
+    function getAddress () {
+      return $this->address;
+    }
+
     function setGroup ($new_group) {
       $this->group = (string) $new_group;
     }
@@ -71,17 +79,11 @@
       array_push($_SESSION['list_of_contacts'], $this);
     }
 
-    function saveGroup (){
-      array_push($_SESSION['list_of_group'], $this);
-    }
 
     static function getContactList () {
       return $_SESSION['list_of_contacts'];
     }
 
-    static function getGroupList () {
-      return $_SESSION['list_of_group'];
-    }
 
     static function delete () {
       session_destroy();

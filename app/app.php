@@ -3,13 +3,19 @@
   require_once __DIR__."/../vendor/autoload.php";
   require_once __DIR__."/../src/Contact.php";
 
+  session_start();
+
+  if(empty($_SESSION['list_of_contacts'])) {
+    $_SESSION['list_of_contacts'] = array ();
+  }
+
+
   $app = new Silex\Application();
   $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
   ));
 
-  $app->get ("/", function() use ($app) {
-
+  $app->get("/", function() use ($app) {
     $exist_con = array ();
 
     $adam = new Contact ("Adam", "Cafe", "friend", "206-000-0000", "adam@mail.com", "0000 1st Ave, Seattle WA", "friends" );
@@ -21,6 +27,34 @@
 
     array_push($exist_con, $adam, $bob, $ceaser, $dan, $eliot, $max);
     return $app['twig']->render('index.html.twig', array('contacts'=>$exist_con));
+  });
+
+  $app->post("/create_contact", function() use ($app) {
+    $new_contact = new Contact ($_POST['name'],$_POST['company'],$_POST['relation'],$_POST['mobile'],$_POST['email'],$_POST['address'],$_POST['group']);
+    $new_contact->saveContact();
+
+    return $app['twig']->render('newcontact.html.twig', array('newcon' => $new_contact));
+  });
+
+  $app->post("/go_back", function() use ($app) {
+    return $app['twig']->render('index.html.twig', array('newcontacts'=>Contact::getContactList()));
+  });
+
+  $app->post("/sort", function() use ($app) {
+    $srt = array ();
+    $sort_name = $_POST['sortName'];
+    foreach($Contact::getContactList() as $contact)
+    if ($sort_name === $contact->getName()){
+      array_push($srt(), $contact);
+    }
+
+    return $app['twig']->render('sort.html.twig', array('contacts'=> $srt());
+  });
+
+
+  $app->post("/delete_all", function() use ($app) {
+    Contact::delete();
+    return $app['twig']->render('delete.html.twig');
   });
 
   return $app;

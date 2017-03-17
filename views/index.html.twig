@@ -2,9 +2,71 @@
   <h1>Contact Book</h1>
   <div class="row">
     <div class="col-md-6">
-      {% for contact in contacts %}
 
+      {% for contact in contacts %}
+        <p>{{ contact.getName }}</p>
+        <li>Mobile: {{ contact.getMobile }}</li>
+        <li>Email: {{ contact.getEmail }}</li>
+        <li>Company: {{ contact.getCompany }}</li>
+        <li>Relation: {{ contact.getRelation }}</li>
+        <li>Address: {{ contact.getAddress }}</li>
       {% endfor %}
+
+      {% if newcontacts is not empty %}
+        {% for newcontact in newcontacts %}
+          <p>You added {{ newcontact.getName }} to you contact book</p>
+          <li>Mobile: {{ newcontact.getMobile }}</li>
+          <li>Email: {{ newcontact.getEmail }}</li>
+          <li>Company: {{ newcontact.getCompany }}</li>
+          <li>Relation: {{ newcontact.getRelation }}</li>
+          <li>Address: {{ newcontact.getAddress }}</li>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="col-md-6">
+      <h2>Add A Contact</h2>
+      <form action="/create_contact" method="post">
+        <div class="form-group">
+          <label for="name">Enter A Name:</label>
+          <input id="name" name="name" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="mobile">Enter Phone Number:</label>
+          <input id="mobile" name="mobile" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="email">Enter Email:</label>
+          <input id="email" name="email" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="company">Enter Company Name:</label>
+          <input id="company" name="company" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="relation">Enter Relation:</label>
+          <input id="relation" name="relation" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="address">Enter Address:</label>
+          <input id="address" name="address" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="group">Enter Group Name:</label>
+          <input id="group" name="group" class="form-control" type="text">
+        </div>
+
+        <button class="btn bg-primary" type="submit">Create</button>
+      </form>
+
+      <form action="/sort" method="post">
+        <label for="sortName">Enter the group name that you want to sort by</label>
+        <input id="sortName" name="sortName" type="text">
+        <button class="btn bg-warning">Sort</button>
+      </form>
+      <form action="/delete_all" method="post">
+        <button class="btn bg-danger">Delete All!</button>
+      </form>
     </div>
   </div>
 {% include 'foot.html.twig' %}

@@ -1,0 +1,16 @@
+{% include 'head.html.twig' %}
+  {% if newcon is not empty %}
+    <h2>You have created a new contact</h2>
+    <li>Name: {{ newcon.getName }}</li>
+    <li>Mobile: {{ newcon.getMobile }}</li>
+    <li>Email: {{ newcon.getEmail }}</li>
+    <li>Company: {{ newcon.getCompany }}</li>
+    <li>Relation: {{ newcon.getRelation }}</li>
+    <li>Address: {{ newcon.getAddress }}</li>
+    <li>Group: {{ newcon.getGroup }}</li>
+  {% endif %}
+
+  <form action="/go_back" method="post">
+    <button class="btn bg-success" type="submit">Go Back</button>
+  </form>
+{% include 'foot.html.twig' %}
