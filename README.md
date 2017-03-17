@@ -32,7 +32,7 @@ _an address book to store contact information for friends and family, using php,
 * _start extra stuff_
 * _be able to edit the specific contact_
 
-[click here](https://github.com/msuli1120/contactbookphp.git) to check out my portfolio
+[click here](https://github.com/msuli1120/contactbookphp.git) to check out the project
 
 ### License
 *This application is licensed under Xing Li's name*
