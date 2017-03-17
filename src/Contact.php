@@ -44,7 +44,7 @@
     }
 
     function setMobile ($new_mobile) {
-      $this->mobile = (int) $new_mobile;
+      $this->mobile = (string) $new_mobile;
     }
 
     function getMobile () {
@@ -79,7 +79,7 @@
       return $_SESSION['list_of_contacts'];
     }
 
-    static function getGroup () {
+    static function getGroupList () {
       return $_SESSION['list_of_group'];
     }
 
