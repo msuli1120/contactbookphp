@@ -10,6 +10,7 @@
         <li>Company: {{ contact.getCompany }}</li>
         <li>Relation: {{ contact.getRelation }}</li>
         <li>Address: {{ contact.getAddress }}</li>
+        <li>Group: {{ contact.getGroup }}</li>
       {% endfor %}
 
       {% if newcontacts is not empty %}
@@ -20,6 +21,7 @@
           <li>Company: {{ newcontact.getCompany }}</li>
           <li>Relation: {{ newcontact.getRelation }}</li>
           <li>Address: {{ newcontact.getAddress }}</li>
+          <li>Group: {{ newcontact.getGroup }}</li>
         {% endfor %}
       {% endif %}
     </div>
@@ -59,11 +61,14 @@
         <button class="btn bg-primary" type="submit">Create</button>
       </form>
 
+    {% if newcontacts is not empty %}
       <form action="/sort" method="post">
         <label for="sortName">Enter the group name that you want to sort by</label>
         <input id="sortName" name="sortName" type="text">
         <button class="btn bg-warning">Sort</button>
       </form>
+    {% endif %}
+
       <form action="/delete_all" method="post">
         <button class="btn bg-danger">Delete All!</button>
       </form>

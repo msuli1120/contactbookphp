@@ -43,12 +43,12 @@
   $app->post("/sort", function() use ($app) {
     $srt = array ();
     $sort_name = $_POST['sortName'];
-    foreach($Contact::getContactList() as $contact)
-    if ($sort_name === $contact->getName()){
-      array_push($srt(), $contact);
-    }
-
-    return $app['twig']->render('sort.html.twig', array('contacts'=> $srt());
+    foreach(Contact::getContactList() as $contact) {
+      if ($sort_name === $contact->getGroup()){
+        array_push($srt, $contact);
+      };
+    };
+    return $app['twig']->render('sort.html.twig', array('contacts'=> $srt, 'grp'=>$sort_name));
   });
 
 

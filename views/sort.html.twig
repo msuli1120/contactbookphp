@@ -1,8 +1,14 @@
 {% include 'head.html.twig' %}
   {% if contacts is not empty %}
-    
-
-
-
+    <h2>You sorted by group name {{ grp }}:</h2>
+    {% for contact in contacts %}
+      <li>Name: {{ contact.getName }}</li>
+      <li>Mobile: {{ contact.getMobile }}</li>
+      <li>Email: {{ contact.getEmail }}</li>
+      <li>Company: {{ contact.getCompany }}</li>
+      <li>Relation: {{ contact.getRelation }}</li>
+      <li>Address: {{ contact.getAddress }}</li>
+      <br>
+    {% endfor %}
   {% endif %}
-{% include 'foot.html.twig' %
+{% include 'foot.html.twig' %}
