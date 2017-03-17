@@ -30,11 +30,24 @@
   });
 
   $app->post("/create_contact", function() use ($app) {
+    $name_err = '';
+    $email_err = '';
+    $phone_err = '';
     $new_contact = new Contact ($_POST['name'],$_POST['company'],$_POST['relation'],$_POST['mobile'],$_POST['email'],$_POST['address'],$_POST['group']);
-    $new_contact->saveContact();
-
-    return $app['twig']->render('newcontact.html.twig', array('newcon' => $new_contact));
-  });
+    if (!preg_match("/^[a-zA-Z ]*$/",$_POST['name'])) {
+      $name_err = "Only letters and white space allowed for Name";
+      return $app['twig']->render('invalid.html.twig', array('nameerr' => $name_err));
+    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+      $email_err = "Invalid email format!";
+      return $app['twig']->render('invalid.html.twig', array('emailerr' => $email_err));
+    } elseif (!preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $_POST['mobile'])) {
+      $phone_err = "Invalid Number!Please use 000-000-0000!";
+      return $app['twig']->render('invalid.html.twig', array('phoneerr' => $phone_err));
+    } else {
+      $new_contact->saveContact();
+      return $app['twig']->render('newcontact.html.twig', array('newcon' => $new_contact));
+    };
+});
 
   $app->post("/go_back", function() use ($app) {
     return $app['twig']->render('index.html.twig', array('newcontacts'=>Contact::getContactList()));
