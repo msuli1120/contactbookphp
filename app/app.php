@@ -47,10 +47,6 @@
     };
 });
 
-  $app->post("/go_back", function() use ($app) {
-    return $app['twig']->render('index.html.twig', array('newcontacts'=>Contact::getContactList()));
-  });
-
   $app->post("/sort", function() use ($app) {
     $srt = array ();
     $sort_name = $_POST['sortName'];
@@ -60,6 +56,23 @@
       };
     };
     return $app['twig']->render('sort.html.twig', array('contacts'=> $srt, 'grp'=>$sort_name));
+  });
+
+  $app->post("/delete_one", function () use ($app) {
+    $delete = $_POST['name'];
+    $lists = Contact::getContactList();
+    print_r($lists);
+    foreach ($lists as $index => $obj) {
+      if($obj->getName()==$delete){
+        unset($lists[$index]);
+      };
+    };
+
+    return $app['twig']->render('index.html.twig', array('newcontacts'=>$lists));
+  });
+
+  $app->post("/go_back", function() use ($app) {
+    return $app['twig']->render('index.html.twig', array('newcontacts'=>Contact::getContactList()));
   });
 
   $app->get("/edit", function () use ($app) {

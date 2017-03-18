@@ -80,6 +80,12 @@
         <input id="sortName" name="sortName" type="text">
         <button class="btn bg-warning">Sort</button>
       </form>
+
+      <form action="/delete_one" method="post">
+        <label for="name">Enter the name that you want to delete</label>
+        <input id="name" name="name" type="text">
+        <button class="btn bg-success" type="submit">Delete</button>
+      </form>
     {% endif %}
 
       <form action="/delete_all" method="post">
