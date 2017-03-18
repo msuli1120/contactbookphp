@@ -61,7 +61,6 @@
   $app->post("/delete_one", function () use ($app) {
     $delete = $_POST['name'];
     $lists = Contact::getContactList();
-    print_r($lists);
     foreach ($lists as $index => $obj) {
       if($obj->getName()==$delete){
         unset($lists[$index]);
